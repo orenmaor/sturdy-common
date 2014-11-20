@@ -1,2 +1,6 @@
 
-<% = node[:opsworks][:layers]['test'][:instances] %>
+<%= node[:opsworks][:layers]['test'][:instances] %>
+<%= node[:opsworks][:instance][:aws_instance_id] %> 
+<%= node[:opsworks][:instance][:hostname] %> 
+<%= node[:opsworks][:instance][:backends] %> 
+<%= node[:opsworks][:instance][:private_ip] %> 
