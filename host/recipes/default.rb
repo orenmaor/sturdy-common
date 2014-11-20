@@ -9,13 +9,12 @@
 require 'json'
 
 instances = Hash.new
-data = node[:opsworks][:layers]['test'][:instances]
-
-layer = data['instance_type']
+node[:opsworks][:layers]['test'][:instances].each do |instance_name, instance|
+  puts instance[:private_ip]
+end
 
 template '/tmp/test' do
   source "test.erb"
   variables ({
-	:layer => layer
   })
 end
