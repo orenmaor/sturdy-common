@@ -8,7 +8,7 @@
 #
 require 'json'
 
-instance_ip = node[:opsworks][:layers]['test'][:instances].first[:private_ip]
+instance_ip = node['opsworks']['layers']['test']['instances'].first[1]['private_ip'] 
 
 template '/tmp/test' do
   source "test.erb"
