@@ -9,7 +9,8 @@
 require 'json'
 
 instances = Hash.new
-layer = JSON.parse(node[:opsworks][:layers]['test'][:instances])
+data = node[:opsworks][:layers]['test'][:instances]
+layer = JSON.parse(data)
 
 template '/tmp/test' do
   source "test.erb"
