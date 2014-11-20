@@ -4,4 +4,6 @@ hostname - <%= node[:opsworks][:instance][:hostname] %>
 backends - <%= node[:opsworks][:instance][:backends] %> 
 private-ip - <%= node[:opsworks][:instance][:private_ip] %> 
 
-layer - <%= @layer %>
+<% @layer.each do |ip| %>
+layer - <%= ip %>
+<% end %>

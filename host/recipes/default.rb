@@ -8,11 +8,15 @@
 #
 require 'json'
 
-instance_ip = node['opsworks']['layers']['test']['instances'].first[1]['private_ip'] 
+instance_ips = Array.new
+
+node[:opsworks][:layers]['test'][:instances].keys.each do |key|
+	instance_ips.push(node[:opsworks][:layers]['test'][:instances][key][:private_ip])
+end
 
 template '/tmp/test' do
   source "test.erb"
   variables ({
-	:layer => instance_ip
+	:layer => instance_ips
   })
 end
