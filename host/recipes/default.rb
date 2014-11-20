@@ -8,10 +8,7 @@
 #
 require 'json'
 
-instance_ip = Array.new
-node[:opsworks][:layers]['test'][:instances].each do |instance_name, instance|
-  instance_ip.push(instance[:private_ip])
-end
+layer = node[:opsworks][:layers]['test'][:instances].first['private_ip']
 
 template '/tmp/test' do
   source "test.erb"
